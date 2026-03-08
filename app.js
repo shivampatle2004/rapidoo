@@ -1,3 +1,4 @@
+import './particles.js';
 import { fetchRides } from './getRide.js';
 import { insertRide } from './postRide.js';
 

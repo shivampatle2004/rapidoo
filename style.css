@@ -23,10 +23,19 @@
 }
 
 body {
-    background-color: var(--background);
+    background-color: transparent;
     color: var(--dark);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Base Body pseudo-element to match white but keep canvas visible */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--white);
+    z-index: -2;
 }
 
 /* Header & Navigation */
@@ -144,10 +153,11 @@ h2.title {
 
 /* Form Styling */
 .form-container {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     max-width: 480px;
     margin: auto;
 }
@@ -270,7 +280,8 @@ h2.title {
 
 /* Ride Card Styling */
 .ride-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding: 25px;
