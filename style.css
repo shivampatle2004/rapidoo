@@ -99,8 +99,47 @@ h2.title {
     font-size: 28px;
     font-weight: 600;
     color: var(--dark);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
+}
+
+/* Search Bar */
+.search-section {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.search-bar {
+    position: relative;
+    box-shadow: var(--shadow);
+    border-radius: 50px;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.search-bar i {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: var(--dark-light);
+    font-size: 16px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 15px 20px 15px 50px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    font-size: 16px;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
 }
 
 /* Form Styling */

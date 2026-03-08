@@ -49,6 +49,9 @@ if (postRideForm) {
     });
 }
 
+// Global state to store rides for filtering
+let allRides = [];
+
 // Load Rides Logic
 export async function loadRides() {
     const rideContainer = document.getElementById('ride-container');
@@ -61,72 +64,96 @@ export async function loadRides() {
     // Simulate network delay for UX
     setTimeout(() => {
         if (result.success) {
-            rideContainer.innerHTML = ''; 
-
-            if (result.data.length === 0) {
-                rideContainer.innerHTML = `
-                <div style="text-align:center; width:100%; grid-column: 1 / -1; padding: 40px;">
-                    <i class="fa-solid fa-car-side fa-3x" style="color:#DADCE0; margin-bottom:15px;"></i>
-                    <h3 style="color:var(--dark);">No rides found</h3>
-                    <p style="color:var(--dark-light); margin-top:5px;">Check back later or offer a ride yourself!</p>
-                </div>`;
-                return;
-            }
-
-            result.data.forEach(ride => {
-                const card = document.createElement('div');
-                card.className = 'ride-card';
-                
-                const initials = ride.driver.substring(0, 1).toUpperCase();
-                
-                card.innerHTML = `
-                    <div class="ride-route">
-                        <div class="route-point">
-                            <i class="fa-solid fa-circle-dot start"></i>
-                            <div class="route-text">
-                                <h4>${ride.start_location}</h4>
-                            </div>
-                        </div>
-                        <div class="route-point">
-                            <i class="fa-solid fa-location-dot end"></i>
-                            <div class="route-text">
-                                <h4>${ride.destination}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="ride-details">
-                        <div class="detail-item">
-                            <i class="fa-regular fa-calendar"></i>
-                            <span>${formatDate(ride.date)}</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>${ride.time}</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fa-solid fa-chair"></i>
-                            <span>${ride.seats} seats</span>
-                        </div>
-                    </div>
-
-                    <div class="ride-footer">
-                        <div class="driver-info">
-                            <div class="driver-avatar">${initials}</div>
-                            <span class="driver-name">${ride.driver}</span>
-                        </div>
-                        <div class="price-tag">
-                            $${ride.price}<span> / seat</span>
-                        </div>
-                    </div>
-                `;
-                
-                rideContainer.appendChild(card);
-            });
+            allRides = result.data;
+            renderRides(allRides);
         } else {
             rideContainer.innerHTML = `<p style="color: #C5221F; grid-column: 1 / -1; text-align: center;">Failed to load rides. Error: ${result.error.message}</p>`;
         }
     }, 500);
+}
+
+// Function to actually render given rides arrays
+function renderRides(ridesToRender) {
+    const rideContainer = document.getElementById('ride-container');
+    if (!rideContainer) return;
+
+    rideContainer.innerHTML = ''; 
+
+    if (ridesToRender.length === 0) {
+        rideContainer.innerHTML = `
+        <div style="text-align:center; width:100%; grid-column: 1 / -1; padding: 40px;">
+            <i class="fa-solid fa-car-side fa-3x" style="color:#DADCE0; margin-bottom:15px;"></i>
+            <h3 style="color:var(--dark);">No rides found</h3>
+            <p style="color:var(--dark-light); margin-top:5px;">Try adjusting your search or check back later!</p>
+        </div>`;
+        return;
+    }
+
+    ridesToRender.forEach(ride => {
+        const card = document.createElement('div');
+        card.className = 'ride-card';
+        
+        const initials = ride.driver.substring(0, 1).toUpperCase();
+        
+        card.innerHTML = `
+            <div class="ride-route">
+                <div class="route-point">
+                    <i class="fa-solid fa-circle-dot start"></i>
+                    <div class="route-text">
+                        <h4>${ride.start_location}</h4>
+                    </div>
+                </div>
+                <div class="route-point">
+                    <i class="fa-solid fa-location-dot end"></i>
+                    <div class="route-text">
+                        <h4>${ride.destination}</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ride-details">
+                <div class="detail-item">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>${formatDate(ride.date)}</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>${ride.time}</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-chair"></i>
+                    <span>${ride.seats} seats</span>
+                </div>
+            </div>
+
+            <div class="ride-footer">
+                <div class="driver-info">
+                    <div class="driver-avatar">${initials}</div>
+                    <span class="driver-name">${ride.driver}</span>
+                </div>
+                <div class="price-tag">
+                    $${ride.price}<span> / seat</span>
+                </div>
+            </div>
+        `;
+        
+        rideContainer.appendChild(card);
+    });
+}
+
+// Search functionality
+const searchInput = document.getElementById('search-input');
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        const filteredRides = allRides.filter(ride => {
+            return ride.start_location.toLowerCase().includes(searchTerm) || 
+                   ride.destination.toLowerCase().includes(searchTerm);
+        });
+        
+        renderRides(filteredRides);
+    });
 }
 
 // Simulating Login and Register forms
