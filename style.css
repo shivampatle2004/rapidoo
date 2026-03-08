@@ -9,8 +9,8 @@
     --white: #FFFFFF;
     --gray-bg: #F1F3F4;
     --border: #DADCE0;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow: 0 6px 16px rgba(249, 201, 34, 0.25); /* Yellow shade shadow */
+    --shadow-hover: 0 10px 24px rgba(249, 201, 34, 0.45); /* Intense yellow shade on hover */
     --radius: 12px;
     --transition: 0.3s ease;
 }
@@ -153,11 +153,11 @@ h2.title {
 
 /* Form Styling */
 .form-container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: var(--radius);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-hover);
     max-width: 480px;
     margin: auto;
 }
@@ -280,7 +280,7 @@ h2.title {
 
 /* Ride Card Styling */
 .ride-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
