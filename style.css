@@ -158,7 +158,6 @@ h2.title {
     padding: 40px;
     border-radius: var(--radius);
     box-shadow: var(--shadow-hover);
-    border: 2px solid var(--dark); /* Added black outline */
     max-width: 480px;
     margin: auto;
 }
@@ -284,7 +283,6 @@ h2.title {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     border-radius: var(--radius);
-    border: 2px solid var(--dark); /* Added black outline */
     border-top: 5px solid var(--primary); /* Keeps the yellow priority bar at top */
     box-shadow: var(--shadow);
     padding: 25px;
