@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Partner - Rapidoo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <header>
+        <a href="final-ride.html" class="logo">
+            <i class="fa-solid fa-motorcycle"></i>
+            Rapidoo
+        </a>
+        <nav>
+            <a href="final-ride.html">Find a Ride</a>
+            <a href="find-partner.html" class="active">Find Partner</a>
+            <a href="offer-ride.html">Offer a Ride</a>
+            <a href="index.html" style="color: #EA4335;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="search-section">
+            <h2 class="title" style="margin-bottom: 5px;">Find a Ride Partner</h2>
+            <p style="text-align: center; color: var(--dark-light); margin-bottom: 20px;">Connect with people from your College or Organization</p>
+            
+            <div class="search-bar" style="border: 2px solid var(--primary); box-shadow: 0 0 10px rgba(249, 201, 34, 0.3);">
+                <i class="fa-solid fa-building-columns" style="color: var(--primary-hover);"></i>
+                <input type="text" id="partner-search-input" placeholder="Search by your College or Organization...">
+            </div>
+        </div>
+        
+        <div id="partner-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px;">
+            <!-- Partner Rides will be injected here dynamically -->
+        </div>
+    </main>
+
+    <!-- Modal for Connection -->
+    <div id="connect-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <i class="fa-solid fa-handshake-angle" style="font-size: 30px; color: var(--primary); margin-bottom: 10px;"></i>
+                <h3 id="modal-title">Connect with Driver</h3>
+            </div>
+            <p id="modal-desc" style="text-align: center; margin-bottom: 20px; color: var(--dark-light);">Send a request to share contact details and plan your trip together.</p>
+            <textarea id="connect-message" placeholder="Hi, I'm also from this organization and looking to share this ride..." rows="3" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px; font-family: inherit;"></textarea>
+            <button id="send-connect-btn" class="btn"><i class="fa-regular fa-paper-plane"></i> Send Request</button>
+            <div id="modal-success-msg" style="display: none; margin-top: 15px; color: #137333; background: #E6F4EA; padding: 10px; border-radius: 8px; text-align: center; font-weight: 500;">
+                <i class="fa-solid fa-circle-check"></i> Request sent! They will check their inbox. 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
