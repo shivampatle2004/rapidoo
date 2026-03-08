@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer a Ride - Rapidoo</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Rapidoo</h1>
+        <nav>
+            <a href="final-ride.html">Find a Ride</a>
+            <a href="offer-ride.html">Offer a Ride</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Offer a Ride</h2>
+            <form id="post-ride-form">
+                <div class="form-group">
+                    <label for="driver">Driver Name</label>
+                    <input type="text" id="driver" required>
+                </div>
+                <div class="form-group">
+                    <label for="start_location">Start Location</label>
+                    <input type="text" id="start_location" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="time" id="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="seats">Available Seats</label>
+                    <input type="number" id="seats" min="1" max="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price ($)</label>
+                    <input type="number" id="price" min="0" required>
+                </div>
+                <button type="submit" class="btn">Post Ride</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </main>
+</body>
+</html>
