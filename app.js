@@ -15,6 +15,7 @@ if (postRideForm) {
         
         const rideData = {
             driver: document.getElementById('driver').value,
+            organization: document.getElementById('organization').value,
             start_location: document.getElementById('start_location').value,
             destination: document.getElementById('destination').value,
             date: document.getElementById('date').value,
@@ -129,7 +130,12 @@ function renderRides(ridesToRender) {
             <div class="ride-footer">
                 <div class="driver-info">
                     <div class="driver-avatar">${initials}</div>
-                    <span class="driver-name">${ride.driver}</span>
+                    <div style="display: flex; flex-direction: column;">
+                        <span class="driver-name">${ride.driver}</span>
+                        <span style="font-size: 12px; color: var(--dark-light); margin-top: 2px;">
+                            <i class="fa-solid fa-building-columns" style="font-size: 10px; color: var(--primary-hover);"></i> ${ride.organization || 'Not specified'}
+                        </span>
+                    </div>
                 </div>
                 <div class="price-tag">
                     $${ride.price}<span> / seat</span>
@@ -148,8 +154,10 @@ if (searchInput) {
         const searchTerm = e.target.value.toLowerCase();
         
         const filteredRides = allRides.filter(ride => {
+            const org = ride.organization ? ride.organization.toLowerCase() : '';
             return ride.start_location.toLowerCase().includes(searchTerm) || 
-                   ride.destination.toLowerCase().includes(searchTerm);
+                   ride.destination.toLowerCase().includes(searchTerm) ||
+                   org.includes(searchTerm);
         });
         
         renderRides(filteredRides);
