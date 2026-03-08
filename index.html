@@ -4,34 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Rapidoo</title>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
 </head>
 <body>
     <header>
-        <h1>Rapidoo</h1>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-motorcycle"></i>
+            Rapidoo
+        </a>
         <nav>
-            <a href="index.html">Login</a>
-            <a href="register.html">Register</a>
+            <a href="index.html" class="active">Login</a>
+            <a href="register.html" class="btn-primary">Sign Up</a>
         </nav>
     </header>
 
     <main>
         <div class="form-container">
-            <h2>Login to Rapidoo</h2>
+            <div class="form-header">
+                <h2>Welcome Back</h2>
+                <p>Enter your details to access your account.</p>
+            </div>
             <form id="login-form">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                    <label for="email">Email Address</label>
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" placeholder="you@example.com" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" required>
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Login Securely</button>
             </form>
             <div class="links">
-                <p>Don't have an account? <a href="register.html">Register here</a></p>
+                <p>New to Rapidoo? <a href="register.html">Create an account</a></p>
             </div>
         </div>
     </main>

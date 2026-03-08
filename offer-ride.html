@@ -4,52 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offer a Ride - Rapidoo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
 </head>
 <body>
     <header>
-        <h1>Rapidoo</h1>
+        <a href="final-ride.html" class="logo">
+            <i class="fa-solid fa-motorcycle"></i>
+            Rapidoo
+        </a>
         <nav>
             <a href="final-ride.html">Find a Ride</a>
-            <a href="offer-ride.html">Offer a Ride</a>
-            <a href="index.html">Logout</a>
+            <a href="offer-ride.html" class="active">Offer a Ride</a>
+            <a href="index.html" style="color: #EA4335;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
         </nav>
     </header>
 
     <main>
-        <div class="form-container">
-            <h2>Offer a Ride</h2>
+        <div class="form-container wide">
+            <div class="form-header">
+                <h2>Publish a Ride</h2>
+                <p>Share your journey and save costs</p>
+            </div>
             <form id="post-ride-form">
                 <div class="form-group">
                     <label for="driver">Driver Name</label>
-                    <input type="text" id="driver" required>
+                    <i class="fa-regular fa-id-badge"></i>
+                    <input type="text" id="driver" placeholder="Enter your name" required>
                 </div>
-                <div class="form-group">
-                    <label for="start_location">Start Location</label>
-                    <input type="text" id="start_location" required>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start_location">Pickup Location</label>
+                        <i class="fa-solid fa-circle-dot" style="color: #4285F4;"></i>
+                        <input type="text" id="start_location" placeholder="E.g., Central Station" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Drop-off Destination</label>
+                        <i class="fa-solid fa-location-dot" style="color: #EA4335;"></i>
+                        <input type="text" id="destination" placeholder="E.g., Tech Park" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" id="destination" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Journey Date</label>
+                        <i class="fa-regular fa-calendar"></i>
+                        <input style="padding-left: 40px;" type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Departure Time</label>
+                        <i class="fa-regular fa-clock"></i>
+                        <input style="padding-left: 40px;" type="time" id="time" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="seats">Available Seats</label>
+                        <i class="fa-solid fa-users"></i>
+                        <input type="number" id="seats" min="1" max="10" placeholder="Number of passengers" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price per Seat ($)</label>
+                        <i class="fa-solid fa-tag"></i>
+                        <input type="number" id="price" min="0" placeholder="0" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="time">Time</label>
-                    <input type="time" id="time" required>
-                </div>
-                <div class="form-group">
-                    <label for="seats">Available Seats</label>
-                    <input type="number" id="seats" min="1" max="10" required>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price ($)</label>
-                    <input type="number" id="price" min="0" required>
-                </div>
-                <button type="submit" class="btn">Post Ride</button>
+
+                <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Publish Ride</button>
             </form>
             <div id="message"></div>
         </div>
